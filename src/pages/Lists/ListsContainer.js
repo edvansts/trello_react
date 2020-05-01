@@ -64,7 +64,7 @@ export default class ListsContainer extends React.Component{
     render(){
         return(
             <div>
-                <div>
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                     <CreateCard float="left" />
                     <DeleteCard float="left" lists= {this.state.lists} />
                     <CreateList float="left" />

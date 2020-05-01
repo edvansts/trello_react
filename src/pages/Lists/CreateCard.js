@@ -33,6 +33,6 @@ export default class CreateCard extends React.Component{
     }
 
     render(){
-        return <button onClick={this.criarCartao.bind(this)}>Criar Cartão</button>
+        return <button class="btn btn-outline-primary" onClick={this.criarCartao.bind(this)}>Criar Cartão</button>
     }
 }

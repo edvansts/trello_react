@@ -17,8 +17,8 @@ export default class BoardsContainer extends React.Component{
                     let list = JSON.parse(result);
                     list.map((item) => {
                         let elem  = document.createElement('li');
-                        //elem.classList.add('list-group-item');
-                        //elem.classList.add('btn-list');
+                        elem.classList.add('list-group-item');
+                        elem.classList.add('btn-list');
                         elem.setAttribute('board-id', item.id);
                         elem.innerText= item.name;
                         elem.addEventListener('click',(elem => {sessionStorage.setItem('idBoard',item.id);

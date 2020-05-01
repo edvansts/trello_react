@@ -36,7 +36,7 @@ export default class Lists extends Component {
     render() {
         return(
             <div>
-                <button onClick={this.deletarCartao.bind(this)}>Deletar Cartão</button>
+                <button class="btn btn-outline-primary" onClick={this.deletarCartao.bind(this)}>Deletar Cartão</button>
             </div>
         ) 
     }

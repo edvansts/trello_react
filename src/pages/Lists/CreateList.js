@@ -24,6 +24,6 @@ export default class CreateList extends Component {
     }
 
     render() {
-        return <button onClick={this.criarLista.bind(this)}>Criar Lista</button>
+        return <button class="btn btn-outline-primary" onClick={this.criarLista.bind(this)}>Criar Lista</button>
     }
 }

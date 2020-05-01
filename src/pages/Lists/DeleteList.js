@@ -14,10 +14,11 @@ export default class Lists extends Component {
         .then(result => {
             let list = JSON.parse(result);
             list.map((item) => {
-                if(item.name.toUpperCase()===listName.toUpperCase){
+                if(item.name.toUpperCase()===listName.toUpperCase()){
                     fetch("https://api.trello.com/1/lists/"+item.id+"/closed?value=true&key="+localStorage.getItem('apiKey')+"&token="+localStorage.getItem("trello_token"),{method: "PUT",})
                     .then(response => response.text())
-                    .then(result => (console.log("Sucessful delete")))
+                    .then(result => {console.log("Sucessful delete") 
+                    window.location.href="http://localhost:3000/lists"})
                     .catch(error => console.log('error', error));
                 }
                 return console.log('');
@@ -27,6 +28,6 @@ export default class Lists extends Component {
     }
     
     render() {
-        return <button onClick={this.deletarLista.bind(this)}>Deletar Lista</button> 
+        return <button class="btn btn-outline-primary" onClick={this.deletarLista.bind(this)}>Deletar Lista</button> 
     }
 }
