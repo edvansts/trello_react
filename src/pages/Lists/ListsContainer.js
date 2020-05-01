@@ -7,14 +7,17 @@ import DeleteList from "./DeleteList"
 export default class ListsContainer extends React.Component{
     constructor(){
         super();
+        this.state = {
+            lists : ''
+        }
+    }
+    componentDidMount(){
         if(localStorage.getItem('trello_token') == null || localStorage.getItem('apiKey')==null){
             window.location.href = 'http://localhost:3000';
         }else{
             this.getLists();
         }
-        this.state = {
-            lists : ''
-        }
+
     }
     getLists(){
         fetch("https://api.trello.com/1/boards/"+sessionStorage.getItem('idBoard')+"/lists?key="+localStorage.getItem('apiKey')+"&token="+localStorage.getItem("trello_token"),{method: "GET",})
@@ -25,7 +28,6 @@ export default class ListsContainer extends React.Component{
             lists: list
             })
           list.map((item) => {
-              console.log(result)
               let elem  = document.createElement('li');
               elem.classList.add('list-group');
               elem.setAttribute('list-id', item.id);
@@ -44,7 +46,6 @@ export default class ListsContainer extends React.Component{
         .then(response => response.text())
         .then(result => {
             let list = JSON.parse(result);
-            console.log(result)
             list.map((item) => {
                 let elem  = document.createElement('li');
                 elem.classList.add('list-group-item');
@@ -64,13 +65,12 @@ export default class ListsContainer extends React.Component{
         return(
             <div>
                 <div>
-                    <CreateCard />
-                    <DeleteCard lists= {this.state.lists} />
-                    <CreateList />
-                    <DeleteList />
+                    <CreateCard float="left" />
+                    <DeleteCard float="left" lists= {this.state.lists} />
+                    <CreateList float="left" />
+                    <DeleteList float="left" />
                 </div>
                 <div className="row">
-                    <div className=""></div>
                 </div>
             </div>
         )
